@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:53313/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:53313/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:53313/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DBModels" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ITextEditorContract_UserExists_InputMessage">
+    <wsdl:part name="parameters" element="tns:UserExists" />
+  </wsdl:message>
+  <wsdl:message name="ITextEditorContract_UserExists_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UserExistsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITextEditorContract_GetUserByLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByLogin" />
+  </wsdl:message>
+  <wsdl:message name="ITextEditorContract_GetUserByLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITextEditorContract_GetUserByGuid_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByGuid" />
+  </wsdl:message>
+  <wsdl:message name="ITextEditorContract_GetUserByGuid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUserByGuidResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITextEditorContract_GetAllUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsers" />
+  </wsdl:message>
+  <wsdl:message name="ITextEditorContract_GetAllUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITextEditorContract_AddUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUser" />
+  </wsdl:message>
+  <wsdl:message name="ITextEditorContract_AddUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITextEditorContract_AddQuery_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddQuery" />
+  </wsdl:message>
+  <wsdl:message name="ITextEditorContract_AddQuery_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddQueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITextEditorContract_SaveQuery_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveQuery" />
+  </wsdl:message>
+  <wsdl:message name="ITextEditorContract_SaveQuery_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveQueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITextEditorContract_DeleteQuery_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteQuery" />
+  </wsdl:message>
+  <wsdl:message name="ITextEditorContract_DeleteQuery_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteQueryResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ITextEditorContract">
+    <wsdl:operation name="UserExists">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITextEditorContract/UserExists" message="tns:ITextEditorContract_UserExists_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITextEditorContract/UserExistsResponse" message="tns:ITextEditorContract_UserExists_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITextEditorContract/GetUserByLogin" message="tns:ITextEditorContract_GetUserByLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITextEditorContract/GetUserByLoginResponse" message="tns:ITextEditorContract_GetUserByLogin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByGuid">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITextEditorContract/GetUserByGuid" message="tns:ITextEditorContract_GetUserByGuid_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITextEditorContract/GetUserByGuidResponse" message="tns:ITextEditorContract_GetUserByGuid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITextEditorContract/GetAllUsers" message="tns:ITextEditorContract_GetAllUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITextEditorContract/GetAllUsersResponse" message="tns:ITextEditorContract_GetAllUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITextEditorContract/AddUser" message="tns:ITextEditorContract_AddUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITextEditorContract/AddUserResponse" message="tns:ITextEditorContract_AddUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddQuery">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITextEditorContract/AddQuery" message="tns:ITextEditorContract_AddQuery_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITextEditorContract/AddQueryResponse" message="tns:ITextEditorContract_AddQuery_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveQuery">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITextEditorContract/SaveQuery" message="tns:ITextEditorContract_SaveQuery_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITextEditorContract/SaveQueryResponse" message="tns:ITextEditorContract_SaveQuery_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteQuery">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITextEditorContract/DeleteQuery" message="tns:ITextEditorContract_DeleteQuery_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITextEditorContract/DeleteQueryResponse" message="tns:ITextEditorContract_DeleteQuery_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ITextEditorContract" type="tns:ITextEditorContract">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UserExists">
+      <soap:operation soapAction="http://tempuri.org/ITextEditorContract/UserExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByLogin">
+      <soap:operation soapAction="http://tempuri.org/ITextEditorContract/GetUserByLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByGuid">
+      <soap:operation soapAction="http://tempuri.org/ITextEditorContract/GetUserByGuid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllUsers">
+      <soap:operation soapAction="http://tempuri.org/ITextEditorContract/GetAllUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddUser">
+      <soap:operation soapAction="http://tempuri.org/ITextEditorContract/AddUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddQuery">
+      <soap:operation soapAction="http://tempuri.org/ITextEditorContract/AddQuery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveQuery">
+      <soap:operation soapAction="http://tempuri.org/ITextEditorContract/SaveQuery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteQuery">
+      <soap:operation soapAction="http://tempuri.org/ITextEditorContract/DeleteQuery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_ITextEditorContract" binding="tns:BasicHttpBinding_ITextEditorContract">
+      <soap:address location="http://localhost:53313/Service1.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

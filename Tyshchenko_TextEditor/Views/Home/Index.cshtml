@@ -1,0 +1,20 @@
+﻿
+@Html.Partial("_Header")
+
+<div class="container">
+
+    @using (Html.BeginForm("UploadFile", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <input id="upload-input" type="file" name="upload" style="display: none"/><br>
+        <button id="open-file" class="btn">Open File</button>
+    }
+    <button class="btn">Save Changes</button>
+
+    <textarea id="document-area" role="document" cols="20">
+        
+    </textarea>
+</div>
+
+@section Scripts {
+    <script src="~/Scripts/js/index.js"></script>
+}

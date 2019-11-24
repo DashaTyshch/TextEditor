@@ -1,0 +1,23 @@
+﻿
+@model IEnumerable<DBModels.Query>
+
+@Html.Partial("_Header")
+
+<div class="flex-container">
+    <table class="table table-bordered table-responsive table-hover">
+        <tr>
+            <th>Date</th>
+            <th>File Path</th>
+            <th>State</th>
+        </tr>
+        @foreach (var d in Model)
+        {
+            <tr>
+                <td>@d.QueryDate</td>
+                <td>@d.FilePath</td>
+                <td>@d.State</td>
+
+            </tr>
+        }
+    </table>
+</div>

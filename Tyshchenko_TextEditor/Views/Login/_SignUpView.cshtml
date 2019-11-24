@@ -1,0 +1,45 @@
+﻿@model Tyshchenko_TextEditor.Models.SignUpModel
+
+<div class="welcome">Sign Up</div>
+@using (Html.BeginForm("Signup", "Login", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.FirstName, new { @class = "sr-only" })
+        @Html.TextBoxFor(m => m.FirstName, null,
+            new { placeholder = "Enter your name", @class = "form-control center-block" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.LastName, new { @class = "sr-only" })
+        @Html.TextBoxFor(m => m.LastName, null,
+            new { placeholder = "Enter your surname", @class = "form-control center-block" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Login, new { @class = "sr-only" })
+        @Html.TextBoxFor(m => m.Login, null,
+            new { placeholder = "Enter your login", @class = "form-control center-block" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email, new { @class = "sr-only" })
+        @Html.TextBoxFor(m => m.Email, null,
+            new { placeholder = "Enter your email", @class = "form-control center-block" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password, new { @class = "sr-only" })
+        @Html.PasswordFor(m => m.Password, new { placeholder = "Enter your password", @class = "form-control center-block" })
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-default center-block sign-in" id="signUp">Sign up</button>
+    </div>
+}
+<form class="form welcome-form" role="form"></form>
+<div class="bottom" style="margin-top: 40px;">
+    <p>You have already Account So <a href="#" class="signup fliper-btn">Log in</a></p>
+</div>

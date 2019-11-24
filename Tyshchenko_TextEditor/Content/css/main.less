@@ -1,0 +1,202 @@
+﻿@lightBlue: #d0e1ef;
+@darkBlue: #112d32;
+@white: whitesmoke;
+
+@footer-height: 4.5rem;
+
+body {
+    padding: 0;
+
+    #page-container {
+        position: relative;
+        min-height: 100vh;
+
+        #content-wrap {
+            padding-bottom: @footer-height;
+
+            .navbar {
+                background-color: @darkBlue;
+                color: @white;
+                border: 0;
+                border-radius: 0;
+
+                .top-header {
+                    padding: 15px;
+                    color: #D4F7EC;
+                    display: block !important;
+                    text-align: center;
+                    font-size: 22px;
+                }
+
+                a {
+                    color: @white;
+                    text-decoration: none;
+                }
+                a:hover {
+                    background-color: lighten(@darkBlue, 20%);
+                }
+
+                .navbar-brand {
+                    color: @lightBlue;
+                }
+                .navbar-brand:hover {
+                    background-color: transparent;
+                    color: white;
+                }
+            }
+
+            .container {
+                .card-container {
+                    min-width: 240px;
+                    background: lighten(@lightBlue, 10%);
+                    position: relative;
+                    -webkit-perspective: 800px;
+                    perspective: 800px;
+                    border: 1px solid @lightBlue;
+                    border-radius: 7px;
+                    padding: 20px;
+
+                    #card {
+                        position: relative;
+                        -webkit-transition: -webkit-transform 1s;
+                        transition: transform 0.5s;
+                        -webkit-transform-style: preserve-3d;
+                        transform-style: preserve-3d;
+
+                        .welcome {
+                            font-family: 'Berkshire Swash', cursive;
+                            color: #ff6a46;
+                            font-size: 33px;
+                            font-weight: 600;
+                        }
+
+                        .welcome-form {
+                            margin: 30px 10px;
+
+                            input {
+                                max-width: 420px;
+                            }
+                        }
+
+                        figure {
+                            display: block;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            -webkit-backface-visibility: hidden;
+                            backface-visibility: hidden;
+
+                            .sign-in {
+                                background-color: #B84014;
+                                color: white;
+                                max-width: 420px;
+                                margin-top: 35px;
+                                width: 100%;
+                                font-size: 16px;
+                            }
+
+                            .fliper-btn {
+                                color: #448D76;
+                            }
+                        }
+
+                        .back {
+                            -webkit-transform: rotateY(180deg);
+                            -moz-transform: rotateY(180deg);
+                            -ms-transform: rotateY(180deg);
+                            -o-transform: rotateY(180deg);
+                            transform: rotateY(180deg);
+
+                            #signUp {
+                                background-color: #B84014;
+                                color: white;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        #footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            bottom: 0;
+            width: 100%;
+            height: @footer-height;
+            background-color: @darkBlue;
+            color: white;
+            border-top: 1px solid #ddd;
+            font-size: 15px;
+        }
+    }
+
+    .container {
+        .flex-container {
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            #upload-input {
+                display: none;
+            }
+        }
+
+        #dropArea {
+            min-width: 160px;
+            width: 50%;
+            min-height: 60px;
+            margin: 20px 0;
+            background: lighten(@lightBlue, 25%);
+            border: #112d32 dotted 1px;
+            text-align: center;
+            color: @darkBlue;
+            padding: 15px;
+            font: 500 17px verdana;
+
+            #choose-file {
+                cursor: pointer;
+            }
+        }
+
+        .active-drop {
+            background: #77bafa !important;
+            border: solid 2px blue !important;
+            opacity: .5;
+            color: black !important;
+        }
+
+        textarea {
+            min-height: 300px;
+            width: 90%;
+            max-width: 90%;
+            margin: 20px auto;
+            border: 2px solid @lightBlue;
+        }
+    }
+
+    #card.flipped {
+        -webkit-transform: rotateY(180deg);
+        -moz-transform: rotateY(180deg);
+        -ms-transform: rotateY(180deg);
+        -o-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+    }
+}
+
+
+    footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+
+
+    @media (min-width: 768px) {
+        .navbar-nav {
+            float: right;
+        }
+    }
