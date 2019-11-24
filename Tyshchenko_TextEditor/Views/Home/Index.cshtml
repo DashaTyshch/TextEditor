@@ -5,14 +5,17 @@
 
     @using (Html.BeginForm("UploadFile", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
-        <input id="upload-input" type="file" name="upload" style="display: none"/><br>
-        <button id="open-file" class="btn">Open File</button>
-    }
-    <button class="btn">Save Changes</button>
 
-    <textarea id="document-area" role="document" cols="20">
+    }
+    <form>
+        <input id="upload-input" type="file" name="upload" style="display: none" /><br>
+        <button id="open-file" class="btn">Open File</button>
+        <input id="save_file" type="button" class="btn" value="Save Changes"/>
+
+        <textarea id="document-area" role="document" cols="20">
+        </textarea>
+    </form>
         
-    </textarea>
 </div>
 
 @section Scripts {
