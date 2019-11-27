@@ -3,10 +3,6 @@
 
 <div class="container">
 
-    @using (Html.BeginForm("UploadFile", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-
-    }
     <form>
         <input id="upload-input" type="file" name="upload" style="display: none" /><br>
         <button id="open-file" class="btn">Open File</button>

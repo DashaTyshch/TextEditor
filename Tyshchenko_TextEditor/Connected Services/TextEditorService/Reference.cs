@@ -51,6 +51,12 @@ namespace Tyshchenko_TextEditor.TextEditorService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITextEditorContract/AddQuery", ReplyAction="http://tempuri.org/ITextEditorContract/AddQueryResponse")]
         System.Threading.Tasks.Task AddQueryAsync(DBModels.Query query, System.Guid userGuid);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITextEditorContract/GetQueryByGuid", ReplyAction="http://tempuri.org/ITextEditorContract/GetQueryByGuidResponse")]
+        DBModels.Query GetQueryByGuid(System.Guid guid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITextEditorContract/GetQueryByGuid", ReplyAction="http://tempuri.org/ITextEditorContract/GetQueryByGuidResponse")]
+        System.Threading.Tasks.Task<DBModels.Query> GetQueryByGuidAsync(System.Guid guid);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITextEditorContract/SaveQuery", ReplyAction="http://tempuri.org/ITextEditorContract/SaveQueryResponse")]
         void SaveQuery(DBModels.Query query);
         
@@ -137,6 +143,14 @@ namespace Tyshchenko_TextEditor.TextEditorService {
         
         public System.Threading.Tasks.Task AddQueryAsync(DBModels.Query query, System.Guid userGuid) {
             return base.Channel.AddQueryAsync(query, userGuid);
+        }
+        
+        public DBModels.Query GetQueryByGuid(System.Guid guid) {
+            return base.Channel.GetQueryByGuid(guid);
+        }
+        
+        public System.Threading.Tasks.Task<DBModels.Query> GetQueryByGuidAsync(System.Guid guid) {
+            return base.Channel.GetQueryByGuidAsync(guid);
         }
         
         public void SaveQuery(DBModels.Query query) {

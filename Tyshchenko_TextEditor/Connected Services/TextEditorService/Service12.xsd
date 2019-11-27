@@ -83,10 +83,24 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetQueryByGuid">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="guid" type="q9:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetQueryByGuidResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/DBModels" minOccurs="0" name="GetQueryByGuidResult" nillable="true" type="q10:Query" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="SaveQuery">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/DBModels" minOccurs="0" name="query" nillable="true" type="q9:Query" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/DBModels" minOccurs="0" name="query" nillable="true" type="q11:Query" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -98,7 +112,7 @@
   <xs:element name="DeleteQuery">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/DBModels" minOccurs="0" name="selectedQuery" nillable="true" type="q10:Query" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/DBModels" minOccurs="0" name="selectedQuery" nillable="true" type="q12:Query" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -1,5 +1,6 @@
 ﻿using DBModels;
 using System;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace Tyshchenko_TextEditor.Controllers
@@ -19,8 +20,8 @@ namespace Tyshchenko_TextEditor.Controllers
         public ActionResult History()
         {
             var user = textEditorService.GetUserByLogin(System.Web.HttpContext.Current.User.Identity.Name);
-
-            return View(user.Queries);
+            
+            return View(user.Queries.OrderByDescending(q => q.QueryDate));
         }
 
         [HttpGet]
@@ -30,13 +31,34 @@ namespace Tyshchenko_TextEditor.Controllers
             try
             {
                 var _ = textEditorService.GetUserByLogin(System.Web.HttpContext.Current.User.Identity.Name);
-                textEditorService.AddQuery(new Query(path, QueryStateEnum.Opened), _.Guid);
-                return Json(new { result = true }, JsonRequestBehavior.AllowGet);
+                Query query = new Query(path, QueryStateEnum.Opened);
+                textEditorService.AddQuery(query, _.Guid);
+
+                return Json(new { result = true, query.Guid}, 
+                    JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
                 return Json(new { result=false, message = ex.Message + ex.InnerException?.Message }, 
                     JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult SaveFile(Guid guid, bool isEdited)
+        {
+            try
+            {
+                var query = textEditorService.GetQueryByGuid(guid);
+                query.State = isEdited ? QueryStateEnum.Edited : QueryStateEnum.NotEdited;
+                textEditorService.SaveQuery(query);
+
+                return Json(new { result = true });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { result = false, message = ex.Message + ex.InnerException?.Message });
             }
         }
     }

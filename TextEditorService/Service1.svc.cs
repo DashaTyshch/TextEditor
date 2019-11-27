@@ -28,6 +28,11 @@ namespace TextEditorService
             return EntityWrapper.GetAllUsers(queryGuid);
         }
 
+        public Query GetQueryByGuid(Guid guid)
+        {
+            return EntityWrapper.GetQueryByGuid(guid);
+        }
+
         public User GetUserByGuid(Guid guid)
         {
             return EntityWrapper.GetUserByGuid(guid);

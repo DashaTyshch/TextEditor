@@ -13,25 +13,8 @@
         card.toggleClass('flipped');
     });
 
-    $("#signIn").click(function () {
-        var login = $('#signin-username').val();
-
-        var pwd = $('#signin-password').val();
-        var data = {
-            'username': login,
-            'password': pwd
-        };
-        API.backendPost('/login/', data, function (err, data) {
-            if (!err) {
-                if (data.status === "ok")
-                    window.location.href = "/home";
-                else {
-                    $('#error').css('visibility', 'visible');
-                }
-            }
-            else
-                alert('Error');
-        })
+    $(".submit-btn").on("click", function (e) {
+        $("#loader").show();
     });
 })
 

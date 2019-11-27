@@ -21,6 +21,8 @@ namespace TextEditorServiceInterface
         [OperationContract]
         void AddQuery(Query query, Guid userGuid);
         [OperationContract]
+        Query GetQueryByGuid(Guid guid);
+        [OperationContract]
         void SaveQuery(Query query);
         [OperationContract]
         void DeleteQuery(Query selectedQuery);

@@ -43,6 +43,12 @@
   <wsdl:message name="ITextEditorContract_AddQuery_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddQueryResponse" />
   </wsdl:message>
+  <wsdl:message name="ITextEditorContract_GetQueryByGuid_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQueryByGuid" />
+  </wsdl:message>
+  <wsdl:message name="ITextEditorContract_GetQueryByGuid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQueryByGuidResponse" />
+  </wsdl:message>
   <wsdl:message name="ITextEditorContract_SaveQuery_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveQuery" />
   </wsdl:message>
@@ -79,6 +85,10 @@
     <wsdl:operation name="AddQuery">
       <wsdl:input wsaw:Action="http://tempuri.org/ITextEditorContract/AddQuery" message="tns:ITextEditorContract_AddQuery_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITextEditorContract/AddQueryResponse" message="tns:ITextEditorContract_AddQuery_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQueryByGuid">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITextEditorContract/GetQueryByGuid" message="tns:ITextEditorContract_GetQueryByGuid_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITextEditorContract/GetQueryByGuidResponse" message="tns:ITextEditorContract_GetQueryByGuid_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SaveQuery">
       <wsdl:input wsaw:Action="http://tempuri.org/ITextEditorContract/SaveQuery" message="tns:ITextEditorContract_SaveQuery_InputMessage" />
@@ -138,6 +148,15 @@
     </wsdl:operation>
     <wsdl:operation name="AddQuery">
       <soap:operation soapAction="http://tempuri.org/ITextEditorContract/AddQuery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQueryByGuid">
+      <soap:operation soapAction="http://tempuri.org/ITextEditorContract/GetQueryByGuid" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

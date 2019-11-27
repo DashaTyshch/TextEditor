@@ -60,6 +60,14 @@ namespace DBAdapter
             }
         }
 
+        public static Query GetQueryByGuid(Guid guid)
+        {
+            using (var context = new TextEditorDBContext())
+            {
+                return context.Queries.FirstOrDefault(q => q.Guid == guid);
+            }
+        }
+
         public static void SaveQuery(Query query)
         {
             using (var context = new TextEditorDBContext())
