@@ -13,7 +13,7 @@
         function (e) {
             e.preventDefault();
             var file = $(this)[0].files[0];
-            //TODO: check file extension
+            
             $("#loader").show();
             $.ajax({
                 url: "/Home/UploadFile?path=" + file.name,
@@ -24,8 +24,8 @@
                     if (data.result) {
                         var reader = new FileReader();
                         reader.onload = function (event) {
-                            fileText = event.target.result;
-                            $("#document-area").val(fileText);
+                            $("#document-area").val(event.target.result);
+                            fileText = $("#document-area").val();
                         }
                         fileName = e.target.files[0].name;
                         reader.readAsText(new Blob([e.target.files[0]], {
@@ -33,6 +33,7 @@
                         }));
 
                         queryGuid = data.Guid;
+                        $("#save_file").removeClass("disabled");
                     }
                     $("#loader").hide();
 
@@ -60,6 +61,7 @@
                     if (!data.result) {
                         
                     }
+                    $("#save_file").addClass("disabled");
                     $("#loader").hide();
                 }
             });
@@ -74,7 +76,7 @@
             document.body.appendChild(a);
             a.click();
             $("#document-area").val("");
-            $("#upload-input").value = "";
+            $("#upload-input").val("");
             document.body.removeChild(a);
         }
     );
