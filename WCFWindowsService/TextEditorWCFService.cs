@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ServiceModel;
 using System.ServiceProcess;
+using Tools;
 
 namespace WCFWindowsService
 {
@@ -22,7 +23,7 @@ namespace WCFWindowsService
 
         protected override void OnStart(string[] args)
         {
-            //Logger.Log("OnStart");
+            Logger.Log("WCF service is starting...");
 #if DEBUG
             RequestAdditionalTime(120 * 1000);
 #endif
@@ -38,15 +39,15 @@ namespace WCFWindowsService
             }
             catch (Exception ex)
             {
-                //Logger.Log("OnStart", ex);
+                Logger.Log("Start - ", ex);
                 throw;
             }
-            //Logger.Log("Service Started");
+            Logger.Log("WCF service started.");
         }
 
         protected override void OnStop()
         {
-            //Logger.Log("OnStop");
+            Logger.Log("WCF service is stoping...");
             RequestAdditionalTime(120 * 1000);
 
             try
@@ -55,16 +56,16 @@ namespace WCFWindowsService
             }
             catch (Exception ex)
             {
-                //Logger.Log("Trying To Stop The Host Listener", ex);
+                Logger.Log("Trying To Stop The Host Listener", ex);
             }
-            //Logger.Log("Service Stopped");
+            Logger.Log("WCF service stopped");
         }
 
         private void UnhandledException(object sender, UnhandledExceptionEventArgs args)
         {
             var ex = (Exception)args.ExceptionObject;
 
-            //Logger.Log("UnhandledException", ex);
+            Logger.Log("UnhandledException", ex);
         }
     }
 }
