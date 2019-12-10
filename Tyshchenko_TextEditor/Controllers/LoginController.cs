@@ -16,30 +16,56 @@ namespace Tyshchenko_TextEditor.Controllers
         {
             if (User.Identity.IsAuthenticated)
                 return RedirectToAction("Index", "Home");
-            return View();
+            return View(new LoginModel());
         }
 
         [AllowAnonymous]
-        public ActionResult Signin(SignInModel user)
+        public ActionResult Signin(SignInModel signInUser)
         {
-            if (textEditorService.UserExists(user.Login))
+            if (ModelState.IsValid)
             {
-                User _ = textEditorService.GetUserByLogin(user.Login);
-                FormsAuthentication.SetAuthCookie(_.Login, true);
-                return RedirectToAction("Index", "Home");
+                if (textEditorService.UserExists(signInUser.Login))
+                {
+                    User user = textEditorService.GetUserByLogin(signInUser.Login);
+                    if(user.CheckPassword(signInUser.Password))
+                    {
+                        FormsAuthentication.SetAuthCookie(user.Login, true);
+                        return RedirectToAction("Index", "Home");
+                    } else
+                        ModelState.AddModelError("Password", "The password is incorrect");
+
+                }
+                else
+                    ModelState.AddModelError("Login", "The username is incorrect");
             }
-            return View(user);
+
+            var model = new LoginModel() { SignIn = signInUser};
+            return View("Login", model);
         }
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Signup(SignUpModel user)
+        public ActionResult Signup(SignUpModel signUpUser)
         {
-            textEditorService.AddUser(
-                new User(user.FirstName, user.LastName, user.Email, user.Login, user.Password));
+            if(ModelState.IsValid)
+            {
+                textEditorService.AddUser(
+                    new User(signUpUser.FirstName, signUpUser.LastName, signUpUser.Email,
+                        signUpUser.LoginSU, signUpUser.PasswordSU));
 
-            FormsAuthentication.SetAuthCookie(user.Login, true);
-            return RedirectToAction("Index", "Home");
+                FormsAuthentication.SetAuthCookie(signUpUser.LoginSU, true);
+                return Json(new { result = true,
+                    url = Url.Action("Index", "Home")
+                });
+            }
+            
+            return Json(new { result = false});
+        }
+
+        [HttpGet]
+        public JsonResult IsLoginAvailable(string loginSU)
+        {
+            return Json(!textEditorService.UserExists(loginSU), JsonRequestBehavior.AllowGet);
         }
 
         [Authorize]

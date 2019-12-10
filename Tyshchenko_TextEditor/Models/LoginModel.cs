@@ -3,7 +3,7 @@ namespace Tyshchenko_TextEditor.Models
 {
     public class LoginModel
     {
-        SignInModel SignIn { get; set; }
-        SignUpModel SignUp { get; set; }
+        public SignInModel SignIn { get; set; } = new SignInModel();
+        public SignUpModel SignUp { get; set; } = new SignUpModel();
     }
 }

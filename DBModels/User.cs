@@ -10,6 +10,7 @@ namespace DBModels
     public class User
     {
         #region Properties
+
         [DataMember]
         public Guid Guid { get; private set; }
         [DataMember]

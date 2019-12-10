@@ -44,7 +44,6 @@ namespace DBAdapter.ModelConfiguration
 
             HasMany(s => s.Queries)
                 .WithRequired()
-                //.HasForeignKey(w => w.UserGuid)
                 .WillCascadeOnDelete(true);
         }
     }

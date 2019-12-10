@@ -1,21 +1,27 @@
 ﻿@model Tyshchenko_TextEditor.Models.SignInModel
 
 <div class="welcome">Welcome!</div>
-@using (Html.BeginForm("Signin", "Login", FormMethod.Post, new { @class = "welcome-form" }))
+@using (Html.BeginForm("Signin", "Login", FormMethod.Post, new { @class = "welcome-form",
+            @id = "signIn_form" }))
 {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
     <div class="form-group">
         @Html.LabelFor(m => m.Login, new { @class = "sr-only" })
         @Html.TextBoxFor(m => m.Login, null,
             new { placeholder = "Enter your login", @class = "form-control center-block" })
+        @Html.ValidationMessageFor(m => m.Login)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Password, new { @class = "sr-only" })
         @Html.PasswordFor(m => m.Password,
             new { placeholder = "Enter your password", @class = "form-control center-block" })
+        @Html.ValidationMessageFor(m => m.Password)
     </div>
 
     <div class="form-group">
-        <button type="submit" class="btn btn-default center-block sign-in submit-btn" id="signIn">Sign in</button>
+        <button type="submit" class="btn btn-default center-block sign-in " id="signIn">Sign in</button>
     </div>
 }
 

@@ -1,7 +1,7 @@
 ﻿@model Tyshchenko_TextEditor.Models.SignUpModel
 
 <div class="welcome">Sign Up</div>
-@using (Html.BeginForm("Signup", "Login", FormMethod.Post))
+@using (Html.BeginForm("Signup", "Login", FormMethod.Post, new { @id ="signUp_form"}))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -10,29 +10,34 @@
         @Html.LabelFor(m => m.FirstName, new { @class = "sr-only" })
         @Html.TextBoxFor(m => m.FirstName, null,
             new { placeholder = "Enter your name", @class = "form-control center-block" })
+        @Html.ValidationMessageFor(m => m.FirstName)
     </div>
 
     <div class="form-group">
         @Html.LabelFor(m => m.LastName, new { @class = "sr-only" })
         @Html.TextBoxFor(m => m.LastName, null,
             new { placeholder = "Enter your surname", @class = "form-control center-block" })
+        @Html.ValidationMessageFor(m => m.LastName)
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.Login, new { @class = "sr-only" })
-        @Html.TextBoxFor(m => m.Login, null,
+        @Html.LabelFor(m => m.LoginSU, new { @class = "sr-only" })
+        @Html.TextBoxFor(m => m.LoginSU, null,
             new { placeholder = "Enter your login", @class = "form-control center-block" })
+        @Html.ValidationMessageFor(m => m.LoginSU)
     </div>
 
     <div class="form-group">
         @Html.LabelFor(m => m.Email, new { @class = "sr-only" })
         @Html.TextBoxFor(m => m.Email, null,
             new { placeholder = "Enter your email", @class = "form-control center-block" })
+        @Html.ValidationMessageFor(m => m.Email)
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "sr-only" })
-        @Html.PasswordFor(m => m.Password, new { placeholder = "Enter your password", @class = "form-control center-block" })
+        @Html.LabelFor(m => m.PasswordSU, new { @class = "sr-only" })
+        @Html.PasswordFor(m => m.PasswordSU, new { placeholder = "Enter your password", @class = "form-control center-block" })
+        @Html.ValidationMessageFor(m => m.PasswordSU)
     </div>
 
     <div class="form-group">

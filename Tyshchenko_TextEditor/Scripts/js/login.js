@@ -13,8 +13,49 @@
         card.toggleClass('flipped');
     });
 
-    $(".submit-btn").on("click", function (e) {
+    $("#signIn").on("click", function (e) {
+        e.preventDefault();
         $("#loader").show();
+
+        if ($("#signIn_form").valid()) {
+            //$.validator.unobtrusive.parse(form);
+            $('#signIn_form').submit();
+        }
+        else {
+            $("#loader").hide();
+        }
+    });
+
+    $("#signUp").on("click", function (e) {
+        e.preventDefault();
+        $("#loader").show();
+
+        if ($("#signUp_form").valid()) {
+            //$.validator.unobtrusive.parse(form);
+            $('#signUp_form').submit();
+        }
+        else {
+            $("#loader").hide();
+        }
+    });
+
+    $("#signUp_form").on("submit", function (e) {
+        e.preventDefault();
+        var form = $(this);
+
+        $.ajax({
+            url: form.attr("action"),
+            type: "POST",
+            data: form.serialize(),
+            success: function (data) {
+                //var result = $.parseJSON(data);
+                if (data.result) {
+                    window.location.href = data.url;
+                } else {
+                    $("#loader").hide();
+                }
+            }
+        });
     });
 })
 

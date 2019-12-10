@@ -53,9 +53,7 @@ namespace DBAdapter
         {
             using (var context = new TextEditorDBContext())
             {
-                //query.DeleteDatabaseValues();
                 context.Users.FirstOrDefault(u => u.Guid == userGuid).Queries.Add(query);
-                //context.Queries.Add(query);
                 context.SaveChanges();
             }
         }
@@ -81,7 +79,6 @@ namespace DBAdapter
         {
             using (var context = new TextEditorDBContext())
             {
-                //selectedQuery.DeleteDatabaseValues();
                 context.Queries.Attach(selectedQuery);
                 context.Queries.Remove(selectedQuery);
                 context.SaveChanges();

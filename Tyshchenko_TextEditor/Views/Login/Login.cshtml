@@ -1,5 +1,7 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    bool? isSignUp = (bool?)TempData["IsSignUp"];
 }
 
 @model Tyshchenko_TextEditor.Models.LoginModel
@@ -19,11 +21,12 @@
                         <section class="card-container">
                             <div id="card">
                                 <figure class="front">
-                                    @Html.Partial("_SignInView")
+                                    @Html.Partial("_SignInView", Model.SignIn)
                                 </figure>
 
-                                <figure class="back" style="display: none;">
-                                    @Html.Partial("_SignUpView")
+                                <figure class="back"
+                                        style="display: none;">
+                                    @Html.Partial("_SignUpView", Model.SignUp)
                                 </figure>
                             </div>
                         </section>
@@ -34,4 +37,5 @@
     </div>
 </div>
 
+@Scripts.Render("~/bundles/jqueryval")
 <script src="~/Scripts/js/login.js"></script>

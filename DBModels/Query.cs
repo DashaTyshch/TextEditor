@@ -7,6 +7,7 @@ namespace DBModels
     public class Query
     {
         #region Properties
+
         [DataMember]
         public Guid Guid { get; private set; }
         [DataMember]
@@ -16,19 +17,12 @@ namespace DBModels
         [DataMember]
         public QueryStateEnum State { get; set; }
 
-        //[DataMember]
-        //public Guid UserGuid { get; }
-        //[DataMember]
-        //public User User { get; private set; }
-
         #endregion
 
-        public Query(string filepath, QueryStateEnum state/*, Guid userGuid*/) : this()
+        public Query(string filepath, QueryStateEnum state) : this()
         {
             FilePath = filepath;
             State = state;
-            //UserGuid = userGuid;
-            //User = user;
         }
 
         private Query()
@@ -42,10 +36,6 @@ namespace DBModels
             return $"~ {FilePath} - {QueryDate:g} - {State}";
         }
 
-        //public void DeleteDatabaseValues()
-        //{
-        //    User = null;
-        //}
     }
 
     public enum QueryStateEnum
