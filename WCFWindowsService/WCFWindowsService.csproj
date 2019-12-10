@@ -85,6 +85,10 @@
       <Project>{02322c40-9480-4ca1-b5cc-31185645c96d}</Project>
       <Name>TextEditorService</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Tools\Tools.csproj">
+      <Project>{e65882f8-7cfa-4ec6-bf39-2a5d58bed19b}</Project>
+      <Name>Tools</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
